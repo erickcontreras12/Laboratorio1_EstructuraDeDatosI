@@ -20,5 +20,7 @@ namespace Lab1ED1_1C18.Models
         public double salarioBase { get; set; }
 
         public double compensasion { get; set; }
+
+        //Prueba de eliminar
     }
 }
