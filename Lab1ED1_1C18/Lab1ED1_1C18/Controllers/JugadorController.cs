@@ -13,6 +13,8 @@ namespace Lab1ED1_1C18.Controllers
     {
 
         DefaultConnection db = DefaultConnection.getInstance;
+        Jugador eliminado,PersonaBuscada;
+
 
         // GET: Jugador
         public ActionResult Index()
@@ -34,7 +36,7 @@ namespace Lab1ED1_1C18.Controllers
 
         // POST: Jugador/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "JugadorID,Club,Nombre,Apellido,Posicion,Salario,Compensasion garantizada")] Jugador jugador)
+        public ActionResult Create([Bind(Include = "jugadorID,club,nombre,apellido,posicion,salarioBase,compensasion")] Jugador jugador)
         {
             try
             {
@@ -72,19 +74,37 @@ namespace Lab1ED1_1C18.Controllers
         }
 
         // GET: Jugador/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            //Corregir
+            PersonaBuscada = db.Jugadores.Find(x => x.jugadorID == id);
+            eliminado = PersonaBuscada;
+
+            if (PersonaBuscada == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(PersonaBuscada);
         }
 
         // POST: Jugador/Delete/5
+
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete([Bind(Include = "jugadorID,club,nombre,apellido,posicion,salarioBase,compensasion")] Jugador jugador)
         {
             try
             {
-                // TODO: Add delete logic here
 
+                //Corregir
+                eliminado = PersonaBuscada;
+                db.Jugadores.Remove(eliminado);
                 return RedirectToAction("Index");
             }
             catch

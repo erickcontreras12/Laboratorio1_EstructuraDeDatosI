@@ -21,6 +21,6 @@ namespace Lab1ED1_1C18.Models
 
         public double compensasion { get; set; }
 
-        //Prueba de eliminar
+       
     }
 }
