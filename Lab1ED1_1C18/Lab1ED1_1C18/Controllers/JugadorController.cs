@@ -50,19 +50,38 @@ namespace Lab1ED1_1C18.Controllers
         }
 
         // GET: Jugador/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == id);
+
+            if (jugadorBuscado == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(jugadorBuscado);
         }
 
         // POST: Jugador/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "JugadorID,Club,Nombre,Apellido,Posicion,Salario,Compensasion garantizada")] Jugador jugador)
         {
             try
             {
                 // TODO: Add update logic here
+                Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == jugador.jugadorID);
+                if (jugadorBuscado == null)
+                {
+                    return HttpNotFound();
+                }
 
+                jugadorBuscado.salarioBase = jugador.salarioBase;
+                jugadorBuscado.club = jugador.club;
                 return RedirectToAction("Index");
             }
             catch
