@@ -34,7 +34,7 @@ namespace Lab1ED1_1C18.Controllers
 
         // POST: Jugador/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "JugadorID,Club,Nombre,Apellido,Posicion,Salario,Compensasion garantizada")] Jugador jugador)
+        public ActionResult Create([Bind(Include = "jugadorID,club,nombre,apellido,posicion,salarioBase,compensasion")] Jugador jugador)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace Lab1ED1_1C18.Controllers
 
         // POST: Jugador/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "JugadorID,Club,Nombre,Apellido,Posicion,Salario,Compensasion garantizada")] Jugador jugador)
+        public ActionResult Edit([Bind(Include = "jugadorID,club,nombre,apellido,posicion,salarioBase,compensasion")] Jugador jugador)
         {
             try
             {
