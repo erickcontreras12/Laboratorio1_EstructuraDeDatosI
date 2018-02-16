@@ -11,7 +11,7 @@ namespace Lab1ED1_1C18.DBContext
         private static volatile ConnectionCSV Instance;
         private static object syncRoot = new Object();
 
-        public List<Jugador> Jugadores = new List<Jugador>();
+        public List<Jugador> Players = new List<Jugador>();
 
         public int IDActual { get; set; }
 

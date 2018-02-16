@@ -17,7 +17,7 @@ namespace Lab1ED1_1C18.Controllers
         // GET: Carga
         public ActionResult Index()
         {
-            return View(db.Jugadores.ToList());
+            return View(db.Players.ToList());
         }
 
         [HttpPost]
@@ -45,9 +45,8 @@ namespace Lab1ED1_1C18.Controllers
                         try
                         {
                                                   
-                            db.Jugadores.Add(new Jugador
+                            db.Players.Add(new Jugador
                             {
-
                                 club = row.Split(',')[0],
                                 apellido = row.Split(',')[1],
                                 nombre = row.Split(',')[2],
@@ -66,7 +65,7 @@ namespace Lab1ED1_1C18.Controllers
             ViewBag.Message = "File uploaded successfully.";
             }
 
-            return View(db.Jugadores.ToList());
+            return View(db.Players.ToList());
         }
 
         // GET: Carga/Details/5
@@ -105,7 +104,7 @@ namespace Lab1ED1_1C18.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == id);
+            Jugador jugadorBuscado = db.Players.Find(x => x.jugadorID == id);
 
             if (jugadorBuscado == null)
             {
@@ -122,7 +121,7 @@ namespace Lab1ED1_1C18.Controllers
             try
             {
                 // TODO: Add update logic here
-                Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == jugador.jugadorID);
+                Jugador jugadorBuscado = db.Players.Find(x => x.jugadorID == jugador.jugadorID);
                 if (jugadorBuscado == null)
                 {
                     return HttpNotFound();
