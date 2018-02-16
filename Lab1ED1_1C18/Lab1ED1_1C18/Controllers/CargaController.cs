@@ -11,18 +11,17 @@ namespace Lab1ED1_1C18.Controllers
 {
     public class CargaController : Controller
     {
-        DefaultConnection db = DefaultConnection.getInstance;
+        ConnectionCSV db = ConnectionCSV.getInstance;
 
         // GET: Carga
         public ActionResult Index()
         {
-            return View(new List<Jugador>());
+            return View(db.Jugadores.ToList());
         }
 
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase postedFile)
-        {
-            List<Jugador> players = new List<Jugador>();
+        {            
             if (postedFile != null)
             {
                 
@@ -45,7 +44,7 @@ namespace Lab1ED1_1C18.Controllers
                         try
                         {
                                                   
-                            players.Add(new Jugador
+                            db.Jugadores.Add(new Jugador
                             {
 
                                 club = row.Split(',')[0],
@@ -54,7 +53,7 @@ namespace Lab1ED1_1C18.Controllers
                                 posicion = row.Split(',')[3],
                                 salarioBase = Convert.ToDouble(row.Split(',')[4]),
                                 compensasion = Convert.ToDouble(row.Split(',')[5]),
-                                jugadorID = ++db.IDActual
+                                
                             });
                         }catch(Exception e)
                         {
@@ -66,7 +65,7 @@ namespace Lab1ED1_1C18.Controllers
             ViewBag.Message = "File uploaded successfully.";
             }
 
-            return View(players.ToList());
+            return View(db.Jugadores.ToList());
         }
 
         // GET: Carga/Details/5

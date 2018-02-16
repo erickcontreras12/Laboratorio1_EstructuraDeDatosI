@@ -2,22 +2,23 @@
 @model  IEnumerable<Lab1ED1_1C18.Models.Jugador>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Archivo CSV";
 }
 
-<h2>Index</h2>
+<h2>Carga de datos por archivo CSV</h2>
 
     @using (Html.BeginForm("Index", "Carga", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <span>Select File:</span>
             <input type="file" name="postedFile" />
-            <hr />
-            <input type="submit" value="Upload" />
             <br />
+            <input type="submit" value="Upload" />          
             <span style="color:green">@ViewBag.Message</span>
+
 
         if (Model != null)
         {
+            <br />
             <table class="table">
                 <tr>
                     <th>
@@ -63,9 +64,8 @@
                             @Html.DisplayFor(modelItem => item.compensasion)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.jugadorID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.jugadorID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.jugadorID })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.jugadorID }) 
+                         
                         </td>
                     </tr>
                 }
