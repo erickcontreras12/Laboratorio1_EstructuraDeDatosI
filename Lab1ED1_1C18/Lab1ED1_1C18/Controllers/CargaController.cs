@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using Lab1ED1_1C18.DBContext;
 using System.Web.Mvc;
+using System.Net;
 
 namespace Lab1ED1_1C18.Controllers
 {
@@ -97,19 +98,38 @@ namespace Lab1ED1_1C18.Controllers
         }
 
         // GET: Carga/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == id);
+
+            if (jugadorBuscado == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(jugadorBuscado);
         }
 
         // POST: Carga/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "jugadorID,club,nombre,apellido,posicion,salarioBase,compensasion")] Jugador jugador)
         {
             try
             {
                 // TODO: Add update logic here
+                Jugador jugadorBuscado = db.Jugadores.Find(x => x.jugadorID == jugador.jugadorID);
+                if (jugadorBuscado == null)
+                {
+                    return HttpNotFound();
+                }
 
+                jugadorBuscado.salarioBase = jugador.salarioBase;
+                jugadorBuscado.club = jugador.club;
                 return RedirectToAction("Index");
             }
             catch

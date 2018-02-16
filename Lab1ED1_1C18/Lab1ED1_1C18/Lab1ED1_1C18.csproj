@@ -201,6 +201,7 @@
     <Content Include="Views\Jugador\Create.cshtml" />
     <Content Include="Views\Jugador\Edit.cshtml" />
     <Content Include="Views\Carga\Index.cshtml" />
+    <Content Include="Views\Carga\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
