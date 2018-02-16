@@ -1,0 +1,75 @@
+﻿@using Lab1ED1_1C18.Models
+@model  IEnumerable<Lab1ED1_1C18.Models.Jugador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+    @using (Html.BeginForm("Index", "Carga", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <span>Select File:</span>
+            <input type="file" name="postedFile" />
+            <hr />
+            <input type="submit" value="Upload" />
+            <br />
+            <span style="color:green">@ViewBag.Message</span>
+
+        if (Model != null)
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.club)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.apellido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.posicion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.salarioBase)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.compensasion)
+                    </th>
+                    <th></th>
+                </tr>      
+     
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.club)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.apellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.posicion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.salarioBase)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.compensasion)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.jugadorID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.jugadorID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.jugadorID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+    }    
