@@ -9,10 +9,10 @@
 
     @using (Html.BeginForm("Index", "Carga", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <span>Select File:</span>
+        <span>Seleccionar archivo:</span>
             <input type="file" name="postedFile" />
             <br />
-            <input type="submit" value="Upload" />          
+            <input type="submit" value="Subir" />          
             <span style="color:green">@ViewBag.Message</span>
 
 

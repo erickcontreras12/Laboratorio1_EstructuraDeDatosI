@@ -62,7 +62,7 @@ namespace Lab1ED1_1C18.Controllers
                     }
                 }
             
-            ViewBag.Message = "File uploaded successfully.";
+            ViewBag.Message = "Archivo Cargado de manera exitosa";
             }
 
             return View(db.Players.ToList());

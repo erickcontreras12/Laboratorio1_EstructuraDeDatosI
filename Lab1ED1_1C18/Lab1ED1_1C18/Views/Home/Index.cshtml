@@ -1,31 +1,33 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Laboratorio 1";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>LABORATORIO 1</h1>
+    <p class="lead">Laboratorio 1 con la inserción de datos manual y la insercion de datos por medio de archivos CSV y edición en ambos</p>  
+      @Html.ActionLink("Info de Pareja", "About")
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Inserción Manual</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+           Ingreso de jugador uno por uno
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        @Html.ActionLink("Insertar datos uno por uno", "Create","Jugador")
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Inserción por archivo CSV</h2>
+        <p>Seleccionar el archivo CSV que se quiere cargar</p>
+        @Html.ActionLink("Insertar Archivo", "Index", "Carga")
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Mostrar datos</h2>
+        <p>Datos de lista manual
+        @Html.ActionLink("Mostrar", "Index", "Jugador")
+        </p>
+        <p>Datos de lista CSV
+        @Html.ActionLink("Mostrar", "Index", "Carga")
+        </p>       
     </div>
 </div>
